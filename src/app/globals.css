@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Dark theme (default) ── */
+:root,
+[data-theme="dark"] {
+  --bg: #0a0a0f;
+  --bg-card: rgba(15, 10, 35, 0.9);
+  --bg-card2: rgba(15, 10, 30, 0.85);
+  --bg-reading: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(30,20,60,0.8));
+  --border: rgba(139, 92, 246, 0.25);
+  --border-card: rgba(139, 92, 246, 0.3);
+  --text: #e8e0ff;
+  --text-muted: #a78bfa;
+  --text-dim: #7c5fc7;
+  --upload-bg: transparent;
+  --upload-border: rgba(139, 92, 246, 0.4);
+  --upload-hover: rgba(139, 92, 246, 0.05);
+  --orb1: rgba(88, 28, 220, 0.15);
+  --orb2: rgba(139, 92, 246, 0.1);
+  --btn-ghost-bg: rgba(255,255,255,0.05);
+  --btn-ghost-border: rgba(255,255,255,0.1);
+  --btn-ghost-color: #a78bfa;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Light theme ── */
+[data-theme="light"] {
+  --bg: #f5f0ff;
+  --bg-card: rgba(255,255,255,0.85);
+  --bg-card2: rgba(248,245,255,0.95);
+  --bg-reading: linear-gradient(135deg, rgba(139,92,246,0.07), rgba(230,220,255,0.6));
+  --border: rgba(139, 92, 246, 0.2);
+  --border-card: rgba(139, 92, 246, 0.25);
+  --text: #1a0a3d;
+  --text-muted: #6d28d9;
+  --text-dim: #9061e0;
+  --upload-bg: rgba(245,240,255,0.8);
+  --upload-border: rgba(139, 92, 246, 0.35);
+  --upload-hover: rgba(139, 92, 246, 0.08);
+  --orb1: rgba(139, 92, 246, 0.08);
+  --orb2: rgba(168, 85, 247, 0.06);
+  --btn-ghost-bg: rgba(139,92,246,0.06);
+  --btn-ghost-border: rgba(139,92,246,0.2);
+  --btn-ghost-color: #6d28d9;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ── Animations ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139,92,246,0.3); }
+  50% { box-shadow: 0 0 60px rgba(139,92,246,0.8), 0 0 100px rgba(139,92,246,0.4); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes bounce-dot {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Utility classes ── */
+.float-animation { animation: float 6s ease-in-out infinite; }
+.glow-pulse { animation: pulse-glow 3s ease-in-out infinite; }
+
+.shimmer-text {
+  background: linear-gradient(90deg, #c4b5fd, #f9a8d4, #fbbf24, #c4b5fd);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+.upload-zone {
+  background: var(--upload-bg);
+  border: 2px dashed var(--upload-border);
+  transition: all 0.3s ease;
+}
+.upload-zone.drag-over,
+.upload-zone:hover {
+  border-color: rgba(139, 92, 246, 0.8);
+  background: var(--upload-hover);
+}
+
+.reading-card {
+  background: var(--bg-reading);
+  border: 1px solid var(--border-card);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #6d28d9, #9333ea);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(139,92,246,0.4);
+}
+
+.btn-ghost {
+  background: var(--btn-ghost-bg);
+  border: 1px solid var(--btn-ghost-border);
+  color: var(--btn-ghost-color);
+  transition: all 0.2s ease;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+}
+
+.card2 {
+  background: var(--bg-card2);
+  border: 1px solid var(--border);
 }
