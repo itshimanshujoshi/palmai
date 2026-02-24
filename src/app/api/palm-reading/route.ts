@@ -8,36 +8,50 @@ export async function POST(request: NextRequest) {
 
     const result = await model.generateContent([
       {
-        text: `You are a mystical AI palmist. Analyze this ${dominantHand || 'dominant'} hand palm image and return a JSON object ONLY — no markdown, no code fences.
+        text: `You are a mystical AI palmist with deep knowledge of traditional palmistry.
+
+This is the person's ${dominantHand || 'right'} hand — their DOMINANT hand.
+
+${dominantHand === 'right'
+  ? 'The RIGHT (dominant) hand reveals the person\'s PRESENT life, conscious choices, career achievements, and future path — what they are actively creating.'
+  : 'The LEFT (dominant) hand reveals the person\'s PRESENT life, conscious choices, career achievements, and future path — what they are actively creating.'}
+
+${dominantHand === 'right'
+  ? 'The left hand shows potential and past; the RIGHT hand (this one) shows WHO THEY ARE NOW and where they are heading.'
+  : 'The right hand shows external actions; the LEFT hand (this one) shows their TRUE inner nature, innate gifts, and deepest potential.'}
+
+Use this hand-specific context to make the reading uniquely different from the opposite hand — emphasize ${dominantHand === 'left' ? 'inner nature, raw talent, emotional truth, and subconscious patterns' : 'current reality, active choices, career trajectory, and conscious direction'}.
+
+Analyze the palm image and return a JSON object ONLY — no markdown, no code fences.
 
 {
-  "overview": "2-3 sentence mystical opening about what you see",
+  "overview": "2-3 sentence mystical opening that specifically references this being their ${dominantHand} hand and what that reveals",
   "loveLife": {
-    "description": "Heart line analysis — emotional nature, relationships, love style",
+    "description": "Heart line analysis — emotional nature, relationships, love style (framed through the ${dominantHand} hand lens)",
     "insight": "A specific personal prediction about love or relationships"
   },
   "careerPath": {
-    "description": "Fate line analysis — career direction, ambition, life purpose",
+    "description": "Fate line analysis — career direction, ambition, life purpose (framed through the ${dominantHand} hand lens)",
     "insight": "A specific insight about career or destiny"
   },
   "lifeEnergy": {
-    "description": "Life line analysis — vitality, health energy, major life changes",
+    "description": "Life line analysis — vitality, health energy, major life changes (framed through the ${dominantHand} hand lens)",
     "insight": "A specific insight about their life force or upcoming changes"
   },
   "hiddenTalents": {
-    "description": "Head line analysis — intellect, creativity, hidden gifts",
+    "description": "Head line analysis — intellect, creativity, hidden gifts (framed through the ${dominantHand} hand lens)",
     "insight": "A specific talent or mental gift revealed by the lines"
   },
   "luckyPeriod": {
-    "description": "Overall palm reading about their most fortunate upcoming period",
+    "description": "Overall reading about their most fortunate upcoming period",
     "insight": "When and why their luck peaks"
   },
   "luckyNumbers": ["7", "3", "21"],
   "luckyColors": ["Purple", "Gold"],
-  "affirmation": "A powerful closing affirmation for this person",
+  "affirmation": "A powerful closing affirmation for this person"
 }
 
-Be mystical, poetic, and personal. Return ONLY the JSON object.`,
+Return ONLY the JSON object.`,
       },
       {
         inlineData: {
