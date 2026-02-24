@@ -48,7 +48,7 @@ export default function Home() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 mt-8 text-sm" style={{ color: 'var(--text-dim)' }}>
-          {['No account needed', 'Images not stored', 'Instant results', 'For entertainment'].map(f => (
+          {['No account needed', 'Images not stored', 'Instant results', 'Personalized reading'].map(f => (
             <span key={f} className="flex items-center gap-1">
               <span style={{ color: '#a78bfa' }}>✓</span> {f}
             </span>
@@ -107,7 +107,7 @@ export default function Home() {
           <span className="text-lg">🔮</span>
           <span className="font-bold" style={{ color: '#a78bfa' }}>PalmAI</span>
         </div>
-        <p className="text-sm" style={{ color: 'var(--text-dim)' }}>© 2025 PalmAI. For entertainment purposes only.</p>
+        <p className="text-sm" style={{ color: 'var(--text-dim)' }}>© 2025 PalmAI. All rights reserved.</p>
         <p className="text-xs mt-1" style={{ color: 'var(--text-dim)', opacity: 0.7 }}>We do not store your palm images.</p>
         <p className="text-xs mt-3" style={{ color: 'var(--text-dim)' }}>
           Created by{' '}

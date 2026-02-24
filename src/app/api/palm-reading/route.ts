@@ -35,7 +35,6 @@ export async function POST(request: NextRequest) {
   "luckyNumbers": ["7", "3", "21"],
   "luckyColors": ["Purple", "Gold"],
   "affirmation": "A powerful closing affirmation for this person",
-  "disclaimer": "For entertainment purposes only"
 }
 
 Be mystical, poetic, and personal. Return ONLY the JSON object.`,

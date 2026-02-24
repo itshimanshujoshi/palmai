@@ -7,7 +7,7 @@ interface Reading {
   loveLife: Section; careerPath: Section; lifeEnergy: Section;
   hiddenTalents: Section; luckyPeriod: Section;
   luckyNumbers: string[]; luckyColors: string[];
-  affirmation: string; disclaimer: string;
+  affirmation: string;
 }
 interface Props { reading: Reading; palmImage: string; onReset: () => void; }
 
@@ -109,7 +109,7 @@ export default function PalmReading({ reading, palmImage, onReset }: Props) {
         </>
       )}
 
-      <p className="text-center text-purple-600 text-xs">🔮 {reading.disclaimer || 'For entertainment purposes only.'}</p>
+
       <button onClick={onReset} className="w-full py-4 rounded-xl font-semibold text-white btn-primary text-lg">🤚 Read Another Palm</button>
     </div>
   );

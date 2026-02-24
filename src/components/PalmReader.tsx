@@ -18,7 +18,6 @@ interface Reading {
   luckyNumbers: string[];
   luckyColors: string[];
   affirmation: string;
-  disclaimer: string;
 }
 
 export default function PalmReader() {
